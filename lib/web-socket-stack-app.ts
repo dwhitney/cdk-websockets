@@ -4,4 +4,4 @@ import * as cdk from '@aws-cdk/core';
 import { WebSocketStack } from './web-socket-stack';
 
 const app = new cdk.App();
-new WebSocketStack(app, 'Websockets');
+new WebSocketStack(app, 'WebSockets');
