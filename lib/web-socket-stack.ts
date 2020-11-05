@@ -66,14 +66,6 @@ exports.handler = function(event, context, callback){
       resources: [ apiWildcardArn ]
     }))
 
-    const authorizer = new apigatewayv2.CfnAuthorizer(this, "WebSocketCognitoAuthorizer", {
-      authorizerType: "REQUEST",
-      identitySource: ["route.request.querystring.token"],
-      apiId: api.ref,
-      name: "WebSocketCognitoAuthorizerV2",
-      authorizerUri: `arn:aws:apigateway:${this.region}:lambda:path/2015-03-31/functions/${websocketFunc.functionArn}/invocations`
-    })
-
     const integration = new apigatewayv2.CfnIntegration(this, "WebSocketIntegration", {
       apiId: api.ref,
       integrationType: "AWS_PROXY",
@@ -84,8 +76,7 @@ exports.handler = function(event, context, callback){
       routeKey: "$connect",
       apiId: api.ref,
       target: core.Fn.join("/", [ "integrations", integration.ref ]),
-      authorizationType: "REQUEST",
-      authorizerId: authorizer.ref,
+      authorizationType: "NONE",
       apiKeyRequired: false,
       operationName: "ConnectRoute"
     })
