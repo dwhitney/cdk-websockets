@@ -1,14 +1,10 @@
-# Welcome to your CDK TypeScript project!
+# WebSockets in CDK
 
-This is a blank project for TypeScript development with CDK.
+CDK doesn't currently have a simple way to create a WebSocket API with API Gateway V2, so I've painstakingly done it from the Cf* primitives, and I hope it's helpful to others.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## How to get this running
 
-## Useful commands
-
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+ * `npm install -g aws-cdk` Install cdk
+ * `cdk deploy` deploy this stack to your default AWS account/region
+ * `wscat -c <WebSocketEndpoint>` connect to the WebSocket with `wscat` and the `WebSocketEndpoint`, which is an output from the CloudFormation stack, and should be displayed on the commandline after a successful deployment
+ * Type a message and it should be echoed back to you
