@@ -1,8 +1,8 @@
 {
-  "name": "cdk-websockets",
+  "name": "websocket-stack-app",
   "version": "0.1.0",
   "bin": {
-    "cdk-websockets": "bin/cdk-websockets.js"
+    "web-socket-stack-app": "lib/web-socket-stack-app.js"
   },
   "scripts": {
     "build": "tsc",
@@ -21,6 +21,11 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
+    "@aws-cdk/aws-apigatewayv2": "^1.71.0",
+    "@aws-cdk/aws-dynamodb": "^1.71.0",
+    "@aws-cdk/aws-lambda": "^1.71.0",
+    "@aws-cdk/aws-lambda-event-sources": "^1.71.0",
+    "@aws-cdk/aws-sqs": "^1.71.0",
     "@aws-cdk/core": "1.71.0",
     "source-map-support": "^0.5.16"
   }
